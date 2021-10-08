@@ -1,4 +1,4 @@
-#UIAngularClient
+# Mediscreen-UI
 
 An UI tool allowing to interact with microservices to provide an easy solution for medical patient management.
 
