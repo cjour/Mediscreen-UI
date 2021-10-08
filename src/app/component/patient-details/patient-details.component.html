@@ -1,0 +1,57 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Birthdate</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Diabete report</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{ patient.name }}</td>
+        <td>{{ patient.firstname }}</td>
+        <td>{{ patient.birthdate | date:'d/MM/YYYY' }}</td>
+        <td>{{ patient.genre }}</td>
+        <td>{{ patient.address }}</td>
+        <td>{{ patient.phoneNumber }}</td>
+        <td>{{diabeteReport}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">_id</th>
+        <th scope="col">patId</th>
+        <th scope="col">description</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let note of notes">
+        <td>{{note.id}}</td>
+        <td>{{note.patId}}</td>
+        <td>{{note.description}}</td>
+        <a [routerLink]="['/updateNote', note.id]" class="btn btn-primary">Edit</a>
+        <a (click)="onDelete(note.id)" class="btn btn-danger">Delete</a>
+      </tr>
+      </tbody>
+    </table>
+    <form (ngSubmit)="onSubmit(patient.id)" class="d-flex flex-column" #noteForm="ngForm">
+      <label for="patientNoteInputField"></label>
+      <textarea rows="4" id="patientNoteInputField" name="text" [(ngModel)]="str" required #note="ngModel"></textarea>
+      <div class="mt-2"><button type="submit" class="btn btn-info" [disabled]="!noteForm.form.valid">Add note</button></div>
+    </form>
+  </div>
+</div>

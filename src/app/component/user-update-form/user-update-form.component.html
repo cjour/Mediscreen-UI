@@ -1,0 +1,70 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        <div class="form-group">
+          <label for="family">Name</label>
+          <input type="text" [(ngModel)]="patient.firstname"
+                 class="form-control"
+                 id="family"
+                 name="family"
+                 placeholder="Enter the patient's name"
+                 required #family="ngModel">
+        </div>
+
+        <div class="form-group">
+          <label for="given">Firstname</label>
+          <input type="text" [(ngModel)]="patient.name"
+                 class="form-control"
+                 id="given"
+                 name="given"
+                 placeholder="Enter the patient's firstname"
+                 required #name="ngModel">
+        </div>
+
+        <div class="form-group">
+          <label for="birthdate">Birthdate</label>
+          <input [ngModel]="patient.birthdate | date : 'YYYY-MM-d'"
+                 (ngModelChange)="patient.birthdate=$event"
+                 type="text"
+                 class="form-control"
+                 id="birthdate"
+                 name="birthdate"
+                 placeholder="Enter the patient's birthdate"
+                 required #birthdate="ngModel">
+        </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" [(ngModel)]="patient.address"
+               class="form-control"
+               id="address"
+               name="address"
+               placeholder="Enter the patient's address"
+               required #address="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="sex">Sex</label>
+        <input type="text" [(ngModel)]="patient.genre"
+               class="form-control"
+               id="sex"
+               name="sex"
+               placeholder="Enter the sex's address"
+               required #sex="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" [(ngModel)]="patient.phoneNumber"
+               class="form-control"
+               id="phone"
+               name="phone"
+               placeholder="Enter the patient's phone"
+               required #phone="ngModel">
+      </div>
+
+      <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,35 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Birthdate</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{ patient.id }}</td>
+        <td>{{ patient.name }}</td>
+        <td>{{ patient.firstname }}</td>
+        <td>{{ patient.birthdate | date:'YYYY/MM/d' }}</td>
+        <td>{{ patient.genre }}</td>
+        <td>{{ patient.address }}</td>
+        <td>{{ patient.phoneNumber }}</td>
+        <td class="d-flex justify-content-center">
+          <a [routerLink]="['/seeDetails', patient.id]" class="btn btn-primary mr-3">See details</a>
+          <a [routerLink]="['/edit', patient.id]" class="btn btn-primary mr-3">Edit</a>
+          <a (click)="onDelete(patient.id)" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <router-outlet></router-outlet>
+</div>

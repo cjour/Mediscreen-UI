@@ -1,0 +1,16 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit(note.patId)" #userForm="ngForm">
+      <div class="form-group">
+        <label for="family">Description</label>
+        <input type="text" [(ngModel)]="note.description"
+               class="form-control"
+               id="family"
+               name="family"
+               required #family="ngModel">
+      </div>
+      <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+  <router-outlet></router-outlet>
+</div>
